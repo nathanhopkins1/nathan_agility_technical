@@ -1,0 +1,57 @@
+<div class="main-container">
+  <h2 style="text-decoration: underline;">Anonymous AgilityGIS Interview Feedback</h2>
+  <p>This survey is anonomous. We would appreciate the feedback</p>
+  <p *ngIf="showResults"><b>Number of Respondents:  {{surveyResults.numberOfRespondents}}</b></p>
+  <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+    <label class="label-header">1. How did you find out about this opportunity?<small>(single choice)</small></label><br>
+    <input id="stack" type="radio" value="a" formControlName="question1">
+    <label for="stack">a. StackOverflow</label><span *ngIf="showResults">({{surveyResults.question1Results.a.numberOfRespondents}}%)</span><br> 
+    <input id="indeed" type="radio" value="b" formControlName="question1">
+    <label for="indeed">b. Indeed</label> <span *ngIf="showResults">({{surveyResults.question1Results.b.numberOfRespondents}}%)</span><br>
+    <input id="other" type="radio" value="c" formControlName="question1">
+    <label for="other">c. Other</label> <span *ngIf="showResults">({{surveyResults.question1Results.c.numberOfRespondents}}%)</span><br><br>
+
+  <label class="label-header">2. How do you find the companies location? <small>(multiple choice)</small></label><br>
+    <input #pt id="publicTransport" type="checkbox" value="a" formControlName="question2" (change)="question2ValueChange(pt.value)">
+    <label for="publicTransport">a. Easy to access by public transport</label><span *ngIf="showResults">({{surveyResults.question2Results.a.numberOfRespondents}}%)</span><br>
+    <input #car id="car" type="checkbox" value="b" formControlName="question2" (change)="question2ValueChange(car.value)">
+    <label for="car">b. Easy to access by car</label><span *ngIf="showResults">({{surveyResults.question2Results.b.numberOfRespondents}}%)</span><br>
+    <input #pleasent id="pleasent" type="checkbox" value="c" formControlName="question2" (change)="question2ValueChange(pleasent.value)">
+    <label for="pleasent">c. In a pleasent area</label><span *ngIf="showResults">({{surveyResults.question2Results.c.numberOfRespondents}}%)</span><br>
+    <input #none id="noneq2" type="checkbox" value="d" formControlName="question2" (change)="question2ValueChange(none.value)">
+    <label for="noneq2">d. None of the above</label><span *ngIf="showResults">({{surveyResults.question2Results.d.numberOfRespondents}}%)</span><br><br>
+  
+    <label class="label-header">3. What was the impression of the office where you had the interview? <small>(single choice)</small></label><br>
+    <input id="tidy" type="radio" value="a" formControlName="question3">
+    <label for="tidy">a. Tidy</label><span *ngIf="showResults">({{surveyResults.question3Results.a.numberOfRespondents}}%)</span><br>
+    <input id="sloppy" type="radio" value="b" formControlName="question3">
+    <label for="sloppy">b. Sloppy</label><span *ngIf="showResults">({{surveyResults.question3Results.b.numberOfRespondents}}%)</span><br>
+    <input id="noneq3" type="radio" value="c" formControlName="question3">
+    <label for="noneq3">c. Did not notice</label><span *ngIf="showResults">({{surveyResults.question3Results.c.numberOfRespondents}}%)</span><br><br>
+    
+    <label class="label-header">4. How technically challenging was the interview? <small>(single choice)</small></label><br>
+    <input id="veryDifficult" type="radio" value="a" formControlName="question4">
+    <label for="veryDifficult">a. Very Difficult</label><span *ngIf="showResults">({{surveyResults.question4Results.a.numberOfRespondents}}%)</span><br>
+    <input id="difficult" type="radio" value="b" formControlName="question4">
+    <label for="difficult">b. Difficult</label><span *ngIf="showResults">({{surveyResults.question4Results.b.numberOfRespondents}}%)</span><br>
+    <input id="moderate" type="radio" value="c" formControlName="question4">
+    <label for="moderate">c. Moderate</label><span *ngIf="showResults">({{surveyResults.question4Results.c.numberOfRespondents}}%)</span><br>
+    <input id="easy" type="radio" value="d" formControlName="question4">
+    <label for="easy">d. Easy</label><span *ngIf="showResults">({{surveyResults.question4Results.d.numberOfRespondents}}%)</span><br><br>
+  
+    <label class="label-header">5. How can you describe the manager that interviewed you? <small>(multiple choice)</small></label><br>
+    <input #enthusiastic id="enthusiastic" type="checkbox" value="a" formControlName="question5" (change)="question5ValueChange(enthusiastic.value)">
+    <label for="enthusiastic">a. Enthusiastic</label><span *ngIf="showResults">({{surveyResults.question5Results.a.numberOfRespondents}}%)</span><br>
+    <input #polite id="polite" type="checkbox" value="b" formControlName="question5" (change)="question5ValueChange(polite.value)">
+    <label for="polite">b. Polite</label><span *ngIf="showResults">({{surveyResults.question5Results.b.numberOfRespondents}}%)</span><br>
+    <input #organized id="organized" type="checkbox" value="c" formControlName="question5" (change)="question5ValueChange(organized.value)">
+    <label for="organized">c. Organized</label><span *ngIf="showResults">({{surveyResults.question5Results.c.numberOfRespondents}}%)</span><br>
+    <input #none id="noneq5" type="checkbox" value="d" formControlName="question5" (change)="question5ValueChange(none.value)">
+    <label for="noneq5">d. Could not tell</label><span *ngIf="showResults">({{surveyResults.question5Results.d.numberOfRespondents}}%)</span><br><br>
+
+    <div style="text-align: center;">
+      <button *ngIf="!showResults" class="btn-submit" type="submit">Submit</button>
+      <button *ngIf="showResults" class="btn-submit" (click)="resetForm()">Submit Another Response</button>
+    </div>  
+  </form>
+</div>
