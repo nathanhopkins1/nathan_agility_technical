@@ -13,10 +13,8 @@ namespace AgilityGISSurvey.API.Controllers
     {
         private readonly DataContext _data;
         private readonly SurveyResponse _surveyResponse;
-       // private readonly IConfiguration _configuration;
-        public ResponseController(/*IConfiguration configuration,*/ DataContext data)
+        public ResponseController(DataContext data)
         {
-            //_configuration = configuration;
             _data = data;
             _surveyResponse = new SurveyResponse(data);
         }
@@ -32,8 +30,6 @@ namespace AgilityGISSurvey.API.Controllers
 
             for (int i = 1; i <= 5; i++)
             {
-                decimal test = (decimal)7 / (decimal)25 * (decimal)100;
-                decimal x = (decimal)_data.Answers.Where(x => x.QuestionNumber == i && x.QuestionAnswer == "a").ToList().Count / (decimal)numberOfRespondents * (decimal)100;
                 var temp = new QuestionResultsDto()
                 {
                     A = new Choice() { NumberOfRespondents = ((decimal)_data.Answers.Where(x => x.QuestionNumber == i && x.QuestionAnswer == "a").ToList().Count / (decimal)numberOfRespondents * (decimal)100).ToString("F") },

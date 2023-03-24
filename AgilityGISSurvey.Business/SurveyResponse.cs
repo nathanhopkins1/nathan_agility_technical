@@ -31,7 +31,6 @@ namespace AgilityGISSurvey.Business
                 }
                 };
 
-                //add is multiple flag
                 for (int i = 0; i < request.Question2Answer.Length; i++)
                 {
                     var q2Answer = new Answer
